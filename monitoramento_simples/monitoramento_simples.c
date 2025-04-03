@@ -1,16 +1,16 @@
 #include "pico/stdlib.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include "semphr.h"
+#include "queue.h"
 #include <stdio.h>
 
 // Declaração das variaveis dos pinos 
 const uint pino_botaoA = 5;
 const uint pino_led_vermelho = 13;
 
-// Declaração dos semaforos 
-SemaphoreHandle_t semaforo_botao;
-SemaphoreHandle_t semaforo_led;
+// Declaração das filas 
+QueueHandle_t fila_botao;
+QueueHandle_t fila_led;
 
 // Função de inicialização
 void setup() {
@@ -41,7 +41,8 @@ bool debounce_botao(uint pino_botao) {
 void vTarefa1(void *parametro) {
     for(;;) {
         if (debounce_botao(pino_botaoA)) {
-            xSemaphoreGive(semaforo_botao);         // Sinalizo a Tarefa 2 que o botão foi pressionado 
+            uint8_t sinal = 1;        
+            xQueueSend(fila_botao, &sinal, portMAX_DELAY); // Sinalizo a Tarefa 2 que o botão foi pressionado
         }
         vTaskDelay(100 / portTICK_PERIOD_MS);
     }
@@ -50,8 +51,9 @@ void vTarefa1(void *parametro) {
 // Função da Tarefa 2, que aguarda o sinal da Tarefa 1 e sinaliza a Tarefa 3 para acender o LED
 void vTarefa2(void *parametro) {
     for (;;) {
-        if (xSemaphoreTake(semaforo_botao, portMAX_DELAY) == pdTRUE) {
-            xSemaphoreGive(semaforo_led);           // Sinalizo a Tarefa 3 e processo estado do botão A
+        uint8_t sinal;
+        if (xQueueReceive(fila_botao, &sinal, portMAX_DELAY) == pdTRUE) {
+            xQueueSend(fila_led, &sinal, portMAX_DELAY);        // Encaminho o sinal para a fila do LED
         }
     }
 }
@@ -59,7 +61,8 @@ void vTarefa2(void *parametro) {
 // Função da Tarefa 3, que aguarda o sinal da Tarefa 2 e acende o LED
 void vTarefa3(void *parametro) {
     for (;;) {
-        if (xSemaphoreTake(semaforo_led, portMAX_DELAY) == pdTRUE) {
+        uint8_t sinal;
+        if (xQueueReceive(fila_led, &sinal, portMAX_DELAY) == pdTRUE) {
             gpio_put(pino_led_vermelho, 1);         // Ascendo o LED        
             vTaskDelay(250 / portTICK_PERIOD_MS);
             gpio_put(pino_led_vermelho, 0);         // Apago o LED
@@ -70,11 +73,12 @@ void vTarefa3(void *parametro) {
 int main() {
     setup();
 
-    // Crio semaforos binarios para fazer sinalizações
-    semaforo_botao = xSemaphoreCreateBinary();
-    semaforo_led = xSemaphoreCreateBinary();
+    // Crio filas para comunicação entre tarefas
+    fila_botao = xQueueCreate(10, sizeof(uint8_t));
+    fila_led = xQueueCreate(10, sizeof(uint8_t));
 
-    if (semaforo_botao != NULL && semaforo_led != NULL) {
+    // Verifico se as filas foram criadas com sucesso
+    if (fila_botao != NULL && fila_led != NULL) {
 
         // Crio as tarefas
         xTaskCreate(vTarefa1, "tarefa1", 256, NULL, 1, NULL);
@@ -85,6 +89,7 @@ int main() {
         vTaskStartScheduler();
     }
 
+    // Caso as filas não tenham sido criadas com sucesso, o programa entra em loop infinito
     while(1){};
     return 0;
 }
