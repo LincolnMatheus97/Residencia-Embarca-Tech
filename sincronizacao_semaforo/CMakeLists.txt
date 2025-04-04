@@ -30,40 +30,33 @@ include(pico_sdk_import.cmake)
 
 include($ENV{FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
 
-project(controle_mutex C CXX ASM)
+project(sincronizacao_semaforo C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(controle_mutex controle_mutex.c 
-    inc/display_OLED/display_OLED
-    inc/display_OLED/ssd1306_i2c.c)
+add_executable(sincronizacao_semaforo sincronizacao_semaforo.c )
 
-pico_set_program_name(controle_mutex "controle_mutex")
-pico_set_program_version(controle_mutex "0.1")
-
-# Generate PIO header
-pico_generate_pio_header(controle_mutex ${CMAKE_CURRENT_LIST_DIR}/ws2818b.pio)
+pico_set_program_name(sincronizacao_semaforo "sincronizacao_semaforo")
+pico_set_program_version(sincronizacao_semaforo "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(controle_mutex 0)
-pico_enable_stdio_usb(controle_mutex 1)
+pico_enable_stdio_uart(sincronizacao_semaforo 0)
+pico_enable_stdio_usb(sincronizacao_semaforo 1)
 
 # Add the standard library to the build
-target_link_libraries(controle_mutex
+target_link_libraries(sincronizacao_semaforo
         pico_stdlib)
 
 # Add the standard include files to the build
-target_include_directories(controle_mutex PRIVATE
+target_include_directories(sincronizacao_semaforo PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
-target_link_libraries(controle_mutex 
-        hardware_i2c
-        hardware_pio
+target_link_libraries(sincronizacao_semaforo 
         pico_stdlib 
         hardware_gpio 
         pico_multicore 
@@ -72,5 +65,5 @@ target_link_libraries(controle_mutex
         hardware_adc
         )
 
-pico_add_extra_outputs(controle_mutex)
+pico_add_extra_outputs(sincronizacao_semaforo)
 
