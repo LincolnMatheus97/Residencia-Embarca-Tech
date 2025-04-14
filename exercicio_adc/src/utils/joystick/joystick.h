@@ -2,7 +2,7 @@
 #include "pico/stdlib.h"
 #include "hardware/adc.h"
 #include "ws2812b_animation.h"
-#include "utils/setas/setas.h"
+#include "utils/direcao/direcao.h"
 
 #define JOYSTICK_VRX 27 // Valor do pino do joystick X
 #define JOYSTICK_VRY 26 // Valor do pino do joystick Y

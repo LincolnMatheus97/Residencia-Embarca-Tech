@@ -1,6 +1,6 @@
-#include "setas.h"
+#include "direcao.h"
 
-void desenha_seta_leste() {
+void desenha_direcao_leste() {
     ws2812b_fill(10, 10, ws2812b_random_color(100));
     ws2812b_fill(11, 11, ws2812b_random_color(100));
     ws2812b_fill(12, 12, ws2812b_random_color(100));
@@ -13,7 +13,7 @@ void desenha_seta_leste() {
     ws2812b_fill(22, 22, ws2812b_random_color(100));
 }
 
-void desenha_seta_oeste() {
+void desenha_direcao_oeste() {
     ws2812b_fill(10, 10, ws2812b_random_color(100));
     ws2812b_fill(11, 11, ws2812b_random_color(100));
     ws2812b_fill(12, 12, ws2812b_random_color(100));
@@ -26,7 +26,7 @@ void desenha_seta_oeste() {
     ws2812b_fill(2, 2, ws2812b_random_color(100));
 }
 
-void desenha_seta_norte() {
+void desenha_direcao_norte() {
     ws2812b_fill(2, 2, ws2812b_random_color(100));
     ws2812b_fill(7, 7, ws2812b_random_color(100));
     ws2812b_fill(12, 12, ws2812b_random_color(100));
@@ -39,7 +39,7 @@ void desenha_seta_norte() {
     ws2812b_fill(14, 14, ws2812b_random_color(100));
 }
 
-void desenha_seta_sul() {
+void desenha_direcao_sul() {
     ws2812b_fill(2, 2, ws2812b_random_color(100));
     ws2812b_fill(7, 7, ws2812b_random_color(100));
     ws2812b_fill(12, 12, ws2812b_random_color(100));
@@ -52,7 +52,7 @@ void desenha_seta_sul() {
     ws2812b_fill(8, 8, ws2812b_random_color(100));
 }
 
-void desenha_seta_noroeste() {
+void desenha_direcao_noroeste() {
     ws2812b_fill(0, 0, ws2812b_random_color(100));
     ws2812b_fill(8, 8, ws2812b_random_color(100));
     ws2812b_fill(12, 12, ws2812b_random_color(100));
@@ -65,7 +65,7 @@ void desenha_seta_noroeste() {
     ws2812b_fill(22, 22, ws2812b_random_color(100));
 }
 
-void desenha_seta_sudeste() {
+void desenha_direcao_sudeste() {
     ws2812b_fill(0, 0, ws2812b_random_color(100));
     ws2812b_fill(8, 8, ws2812b_random_color(100));
     ws2812b_fill(12, 12, ws2812b_random_color(100));
@@ -78,7 +78,7 @@ void desenha_seta_sudeste() {
     ws2812b_fill(2, 2, ws2812b_random_color(100));
 }
 
-void desenha_seta_nordeste() {
+void desenha_direcao_nordeste() {
     ws2812b_fill(4, 4, ws2812b_random_color(100));
     ws2812b_fill(6, 6, ws2812b_random_color(100));
     ws2812b_fill(12, 12, ws2812b_random_color(100));
@@ -91,7 +91,7 @@ void desenha_seta_nordeste() {
     ws2812b_fill(10, 10, ws2812b_random_color(100));
 }
 
-void desenha_seta_sudoeste() {
+void desenha_direcao_sudoeste() {
     ws2812b_fill(4, 4, ws2812b_random_color(100));
     ws2812b_fill(6, 6, ws2812b_random_color(100));
     ws2812b_fill(12, 12, ws2812b_random_color(100));

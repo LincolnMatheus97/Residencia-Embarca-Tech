@@ -37,7 +37,7 @@ pico_sdk_init()
 
 add_executable(exercicio_adc src/exercicio_adc.c 
    src/utils/joystick/joystick.c
-   src/utils/setas/setas.c)
+   src/utils/direcao/direcao.c)
 
 # Incluir a biblioteca ws2812b
 add_subdirectory(

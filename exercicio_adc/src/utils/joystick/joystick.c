@@ -34,21 +34,21 @@ void verificar_movimento() {
     ws2812b_fill_all(GRB_BLACK);
 
     if (valor_x > JOYSTICK_LIMITE_SUPERIOR && valor_y > JOYSTICK_LIMITE_SUPERIOR) {
-        desenha_seta_nordeste();
+        desenha_direcao_nordeste();
     } else if (valor_x > JOYSTICK_LIMITE_SUPERIOR && valor_y < JOYSTICK_LIMITE_INFERIOR) {
-        desenha_seta_sudeste();
+        desenha_direcao_sudeste();
     } else if (valor_x < JOYSTICK_LIMITE_INFERIOR && valor_y > JOYSTICK_LIMITE_SUPERIOR) {
-        desenha_seta_noroeste();
+        desenha_direcao_noroeste();
     } else if (valor_x < JOYSTICK_LIMITE_INFERIOR && valor_y < JOYSTICK_LIMITE_INFERIOR) {
-        desenha_seta_sudoeste();
+        desenha_direcao_sudoeste();
     } else if (valor_x > JOYSTICK_LIMITE_SUPERIOR) {
-        desenha_seta_leste();
+        desenha_direcao_leste();
     } else if (valor_x < JOYSTICK_LIMITE_INFERIOR) {
-        desenha_seta_oeste();
+        desenha_direcao_oeste();
     } else if (valor_y > JOYSTICK_LIMITE_SUPERIOR) {
-        desenha_seta_norte();
+        desenha_direcao_norte();
     } else if (valor_y < JOYSTICK_LIMITE_INFERIOR) {
-        desenha_seta_sul();
+        desenha_direcao_sul();
     } else {
         ws2812b_fill_all(GRB_BLACK);
     }
