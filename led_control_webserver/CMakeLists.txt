@@ -77,7 +77,11 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(led_control_webserver led_control_webserver.c )
+add_executable(led_control_webserver 
+    src/main.c
+    src/utils/sensores/sensores.c
+    src/utils/servidor_tcp/servidor_tcp.c 
+)
 
 pico_set_program_name(led_control_webserver "led_control_webserver")
 pico_set_program_version(led_control_webserver "0.1")
@@ -97,6 +101,8 @@ target_link_libraries(led_control_webserver
 # Add the standard include files to the build
 target_include_directories(led_control_webserver PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/src
+    ${CMAKE_CURRENT_LIST_DIR}/src/utils
     ${PICO_SDK_PATH}/lib/lwip/src/include
     ${PICO_SDK_PATH}/lib/lwip/src/include/arch
     ${PICO_SDK_PATH}/lib/lwip/src/include/lwip
