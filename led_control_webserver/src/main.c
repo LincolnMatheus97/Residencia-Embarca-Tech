@@ -7,8 +7,8 @@
 #include "utils/sensores/sensores.h"
 #include "utils/servidor_tcp/servidor_tcp.h"
 
-#define WIFI_SSID "Larissa Lima"         // Nome da rede Wi-Fi
-#define WIFI_PASSWORD "larissalima33840" // Senha da rede Wi-Fi
+#define WIFI_SSID "SuaRede"         // Nome da rede Wi-Fi
+#define WIFI_PASSWORD "SenhaSuaRede" // Senha da rede Wi-Fi
 
 // --- Função Principal (início do programa) ---
 int main()
