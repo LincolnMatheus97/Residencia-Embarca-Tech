@@ -475,15 +475,10 @@ err_t dados_recebidos_cliente(void *arg_estado_conexao, struct tcp_pcb *cliente_
         
         printf("Iniciando envio HTML, separando por chunks...\n"); 
         err_t erro_envio_chunk = enviar_chunk(estado_atual);    // Começa o envio dos chunk de dados
-        // Verifica se o envio do chunk falhou, se sim, imprime mensagem de erro e fecha a conexão do cliente
+        // Verifica se o envio do chunk falhou, se sim, imprime mensagem de erro
         if (erro_envio_chunk != ERR_OK && erro_envio_chunk != ERR_MEM)
         {
             printf("Erro inicial %d ao chamar enviar os chunks para HTML.\n", erro_envio_chunk);
-            if (estado_atual)
-            {
-                fechar_conexao_cliente(estado_atual); // Fecha a conexão do cliente
-            }
-            return erro_envio_chunk; // Retorna o erro de envio do chunk
         }
     }
     else
