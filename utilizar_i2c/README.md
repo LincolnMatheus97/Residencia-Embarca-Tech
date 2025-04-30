@@ -92,7 +92,6 @@ O código implementa a comunicação I2C para controlar um display SSD1306.
     - Se a leitura for bem-sucedida (`result >= 0`), significa que um dispositivo respondeu (ACK) nesse endereço. O endereço encontrado é armazenado em `addr_device`. _Nota: Este scanner simples retorna apenas o endereço encontrado._
     - Um pequeno `sleep_ms(5)` é adicionado para dar tempo aos dispositivos responderem.
     - Retorna o endereço do dispositivo encontrado (ou 0x00 se nenhum for encontrado).
-    - _Observação:_ O `printf("Scanner finalizado.\n");` está após o `return` e, portanto, nunca será executado.
 
 6.  **`display_init()`:**
 

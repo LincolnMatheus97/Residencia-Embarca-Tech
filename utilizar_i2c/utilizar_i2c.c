@@ -52,8 +52,8 @@ uint8_t i2c_bus_scan(i2c_inst_t *i2c)
         }
         sleep_ms(5); 
     }
+    printf("Scanner I2C concluído.\n");
     return addr_device; 
-    printf("Scanner finalizado.\n");
 }
 
 /*
