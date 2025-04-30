@@ -47,7 +47,7 @@ Ambas as linhas são do tipo "open-drain" (ou "open-collector"), o que significa
 
 ## O Que é Necessário para Funcionar?
 
-1.  **Microcontrolador com Suporte I2C:** A Raspberry Pi Pico possui hardware I2C dedicado.
+1.  **Microcontrolador com Suporte I2C:** A Raspberry Pi Pico W possui hardware I2C dedicado.
 2.  **Dispositivo(s) Escravo(s) I2C:** Neste caso, um display OLED SSD1306. Cada dispositivo deve ter um endereço I2C único no barramento.
 3.  **Conexões Físicas:**
     - Conectar o pino SDA do microcontrolador ao pino SDA do display.
