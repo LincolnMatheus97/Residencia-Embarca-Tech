@@ -89,7 +89,7 @@ O código implementa a comunicação I2C para controlar um display SSD1306.
     - Função para detectar dispositivos I2C conectados ao barramento.
     - Itera sobre a faixa de endereços I2C padrão (0x08 a 0x77). Endereços fora dessa faixa são geralmente reservados.
     - Para cada endereço (`addr`), tenta ler 1 byte (`i2c_read_blocking`). Esta função envia o endereço do dispositivo no modo de leitura.
-    - Se a leitura for bem-sucedida (`result >= 0`), significa que um dispositivo respondeu (ACK) nesse endereço. O endereço encontrado é armazenado em `addr_device`. _Nota: Este scanner simples retorna apenas o último endereço encontrado. Uma implementação mais robusta listaria todos os endereços._
+    - Se a leitura for bem-sucedida (`result >= 0`), significa que um dispositivo respondeu (ACK) nesse endereço. O endereço encontrado é armazenado em `addr_device`. _Nota: Este scanner simples retorna apenas o endereço encontrado._
     - Um pequeno `sleep_ms(5)` é adicionado para dar tempo aos dispositivos responderem.
     - Retorna o endereço do dispositivo encontrado (ou 0x00 se nenhum for encontrado).
     - _Observação:_ O `printf("Scanner finalizado.\n");` está após o `return` e, portanto, nunca será executado.
