@@ -57,6 +57,18 @@ int main(){
     inic_comun_i2c(CANAL_I2C, SDA_I2C, SCL_I2C, 40 * 1000);
     uint8_t end_display = detec_disp_i2c(CANAL_I2C);
 
+    if (end_display != 0x00) {
+        printf("Display encontrado no endereco: 0x%02X\n", end_display);
+    } else {
+        for (int tentativas = 10; tentativas >= 10; tentativas--) {
+            end_display = detec_disp_i2c(CANAL_I2C);
+            if (end_display != 0x00) break; 
+        }
+        if (end_display == 0x00) {
+            printf("Display nao encontrado apos as tentativas.\n");
+       }
+    }
+
     inic_display(&display, 128, 64, end_display, CANAL_I2C);
 
     int contador = 0;
