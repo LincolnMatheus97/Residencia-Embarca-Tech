@@ -6,9 +6,10 @@
 #include <stdlib.h>          
 #include "utils/sensores/sensores.h"
 #include "utils/servidor_tcp/servidor_tcp.h"
+#include "utils/cliente_http/cliente_http.h"
 
-#define WIFI_SSID "SuaRede"         // Nome da rede Wi-Fi
-#define WIFI_PASSWORD "SenhaSuaRede" // Senha da rede Wi-Fi
+#define WIFI_SSID "SBG_Ext"         // Nome da rede Wi-Fi
+#define WIFI_PASSWORD "S27G24B17" // Senha da rede Wi-Fi
 
 // --- Função Principal (início do programa) ---
 int main()
@@ -56,6 +57,8 @@ int main()
     while (true)
     {
         cyw43_arch_poll();
+        enviar_dados_para_nuvem();
+        sleep_ms(1000);
     }
 
     cyw43_arch_deinit();
