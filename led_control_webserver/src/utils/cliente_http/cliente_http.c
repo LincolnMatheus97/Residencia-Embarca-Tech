@@ -11,7 +11,7 @@
 #define HOST "api-iot-rse.onrender.com"
 #define PORTA_HTTP 80
 
-// Forward declaration
+// Declaração para usar no callback
 void enviar_requisicao_tcp(struct tcp_pcb *pcb);
 
 static void callback_dns_resolvido(const char *nome_host, const ip_addr_t *ip_resolvido, void *arg) {
