@@ -80,7 +80,8 @@ pico_sdk_init()
 add_executable(led_control_webserver 
     src/main.c
     src/utils/sensores/sensores.c
-    src/utils/servidor_tcp/servidor_tcp.c 
+    src/utils/servidor_tcp/servidor_tcp.c
+    src/utils/cliente_http/cliente_http.c 
 )
 
 pico_set_program_name(led_control_webserver "led_control_webserver")
