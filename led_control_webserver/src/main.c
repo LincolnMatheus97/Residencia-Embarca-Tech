@@ -58,7 +58,7 @@ int main()
     {
         cyw43_arch_poll();
         enviar_dados_para_nuvem();
-        sleep_ms(1000);
+        sleep_ms(200);
     }
 
     cyw43_arch_deinit();
