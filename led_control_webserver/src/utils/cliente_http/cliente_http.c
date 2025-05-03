@@ -14,7 +14,7 @@
 
 // --- Função para processar resposta do servidor ---
 static err_t callback_resposta_recebida(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err) {
-    // ... (código existente sem alterações) ...
+    
     if (!p) {
         printf("Conexão fechada pelo servidor.\n");
         tcp_close(pcb);
