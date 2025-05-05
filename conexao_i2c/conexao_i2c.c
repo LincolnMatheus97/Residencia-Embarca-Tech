@@ -30,6 +30,7 @@ uint8_t ender_dispo_conect(i2c_inst_t *i2c)
             end_disp = end_atual;
             break;
         }
+        sleep_ms(50);
     }
     return end_disp;
 }
